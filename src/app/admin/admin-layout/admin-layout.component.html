@@ -4,7 +4,8 @@
       <div class="rounded-md border overflow-hidden w-72">
         <div class="user text-center bg-primary py-10 px-5">
           <img class="ml-auto mr-auto" src="assets/images/avatar.png" alt="imge" />
-          <h4 class="text-base text-white mt-3">{{userData.firstName | titlecase}} {{userData.lastName | titlecase}}</h4>
+          <!-- <h4 class="text-base text-white mt-3">{{userData.firstName | titlecase}} {{userData.lastName | titlecase}}</h4> -->
+       <h4>Admin</h4>
         </div>
 
         <mat-nav-list class="_sidenav">
@@ -79,7 +80,8 @@
                 <div class="rounded-md border overflow-hidden h-full">
                   <div class="user text-center bg-primary py-10 px-5">
                     <img class="ml-auto mr-auto" src="assets/images/avatar.png" alt="image" />
-                    <h4 class="text-white mt-3">{{userData.firstName | titlecase}} {{userData.lastName | titlecase}}</h4>
+                    <!-- <h4 class="text-white mt-3">{{userData.firstName | titlecase}} {{userData.lastName | titlecase}}</h4> -->
+                    <h4 class="text-white mt-3">Admin</h4>
                   </div>
                   <mat-nav-list class="_sidenav">
                     <a
@@ -117,6 +119,13 @@
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
                       ><mat-icon class="mr-2">create</mat-icon> Add Book</a
+                    >
+                    <a
+                      mat-list-item
+                      routerLink="/admin/Order"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2">create</mat-icon> Order Management</a
                     >
                     <a (click)="onLogout()" mat-list-item class="font-semibold text-gray-500 hover:text-primary"><mat-icon class="mr-2">logout</mat-icon> Logout</a>
                   </mat-nav-list>

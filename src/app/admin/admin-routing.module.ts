@@ -5,13 +5,14 @@ import { AdminBooklistComponent } from './admin-booklist/admin-booklist.componen
 import { AdminEditbookComponent } from './admin-editbook/admin-editbook.component';
 import { AdminIndexComponent } from './admin-index/admin-index.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+import { AdminOrderComponent } from './admin-order/admin-order.component';
 
 const AdminChildrenRoute:Routes=[
-  {
-    path:'',
-    pathMatch:'full',
-    component:AdminIndexComponent
-},
+//   {
+//     path:'',
+//     pathMatch:'full',
+//     component:AdminIndexComponent
+// },
 {
   path:'AddBook',
   component:AdminAddbookComponent
@@ -21,9 +22,14 @@ const AdminChildrenRoute:Routes=[
   component:AdminBooklistComponent
 },
 {
+  path:'Order',
+  component:AdminOrderComponent
+},
+{
   path:':id',
   component:AdminEditbookComponent
 }
+
 ];
 
 
@@ -43,6 +49,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
+  
 })
 
 export class AdminRoutingModule { }

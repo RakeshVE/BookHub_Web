@@ -7,6 +7,15 @@
           <li *ngFor="let menu of menuList">
             <a mat-button [routerLink]="[menu.path]" routerLinkActive="bg-gray-100" class="text-lg font-bold py-2 px-5">{{ menu.name }}</a>
           </li>
+          <li  *ngIf="username!=null && username!=''">
+            <a mat-button [routerLink]="['/dashboard']" routerLinkActive="bg-gray-100" class="text-lg font-bold py-2 px-5">Dashboard</a>
+          </li>
+          <li *ngIf="username!=null && username!=''">
+            <a mat-button [routerLink]="['/admin']" routerLinkActive="bg-gray-100" class="text-lg font-bold py-2 px-5">Admin</a>
+          </li>
+          <li *ngIf="username!=null && username!=''">
+            <a mat-button [routerLink]="['/cart']" routerLinkActive="bg-gray-100" class="text-lg font-bold py-2 px-5">Cart</a>
+          </li>
         </ul>
       </div>
       <button

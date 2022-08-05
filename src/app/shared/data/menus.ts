@@ -15,19 +15,19 @@ export const menuList: Menu[] = [
   {
     path: '/contact',
     name: 'Contact'
-  },
-  {
-    path: '/dashboard',
-    name: 'Dashboard'
-  },
-  {
-    path: '/admin',
-    name: 'Admin'
-  },
-  {
-    path: '/cart',
-    name: 'Cart'
   }
+  // {
+  //   path: '/dashboard',
+  //   name: 'Dashboard'
+  // },
+  // {
+  //   path: '/admin',
+  //   name: 'Admin'
+  // },
+  // {
+  //   path: '/cart',
+  //   name: 'Cart'
+  // }
   // {
   //   path: '/Review',
   //   name: 'Order'

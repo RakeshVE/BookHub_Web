@@ -21,6 +21,8 @@ import {ButtonModule} from 'primeng/button';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdminEditbookComponent } from './admin-editbook/admin-editbook.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AdminService } from '../services/admin.service';
+import { AdminOrderComponent } from './admin-order/admin-order.component';
 
 
 
@@ -30,7 +32,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     AdminLayoutComponent,
     AdminAddbookComponent,
     AdminBooklistComponent,
-    AdminEditbookComponent
+    AdminEditbookComponent,
+    AdminOrderComponent
   ],
   imports: [
     CommonModule,
@@ -46,6 +49,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatButtonModule,
     MatToolbarModule,
     TableModule,ButtonModule,NgxPaginationModule,MatSlideToggleModule
-  ]
+  ],
+  providers:[AdminService]
 })
 export class AdminModule { }

@@ -44,4 +44,5 @@ export class UserService {
   checkOut(totalPrice:any){
     return this.httpClient.post(this.baseAPIurl + "Orders/Checkout?Checkout=" , totalPrice);
   }
+ 
 }

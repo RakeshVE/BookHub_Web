@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-12">
+      <div class="table-responsive">
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>OrderId</th>
+                      <th>Book Id</th> 
+                      <th>Email</th>                       
+                      <th>Phone</th>
+                     
+                      <th>Status</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let product of Orderdata | paginate: { itemsPerPage: 10, currentPage: p }">
+                      <td>{{product.orderId}}</td>
+                      <td>{{product.bookId}}</td>
+                      <!-- <td>{{product.email}}</td>
+                      <td>{{product.phone}}</td>
+                      <td><mat-slide-toggle [checked]="product.isActive" ></mat-slide-toggle></td> -->
+                      <td><button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" [routerLink]="['/admin', product.bookId]">
+                          <mat-icon>edit</mat-icon>
+                        </button></td>
+                     
+                       
+
+                  </tr>
+                  
+              </tbody>
+              
+          </table>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+  </div>
+</div>

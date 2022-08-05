@@ -1,20 +1,20 @@
 <div class="grid grid-cols-12 gap-4 lg:gap-8">
   <div class="col-span-6 md:col-span-4 border rounded px-4 lg:px-8 py-8 lg:py-16">
-    <mat-icon class="text-accent mb-5">favorite_border</mat-icon>
-    <h6>Favorites</h6>
-    <div class="count mb-3 mt-5">10</div>
+    <mat-icon class="text-accent mb-5"></mat-icon>
+    <h6>Total  Users</h6>
+    <div class="count mb-3 mt-5">{{dashboarddata.totalUsers}}</div>
     <a [routerLink]="'/dashboard/saved-items'" class="font-semibold" mat-flat-button color="warn">View All</a>
   </div>
   <div class="col-span-6 md:col-span-4 border rounded px-4 lg:px-8 py-8 lg:py-16">
     <mat-icon class="text-accent mb-5">sync</mat-icon>
-    <h6>Number of ongoing orders</h6>
-    <div class="count mb-3 mt-5">10</div>
+    <h6>Total Sales</h6>
+    <div class="count mb-3 mt-5">{{dashboarddata.totalSales}}</div>
     <a [routerLink]="'/dashboard/orders'" class="font-semibold" mat-flat-button color="warn">View All</a>
   </div>
   <div class="col-span-6 md:col-span-4 border rounded px-4 lg:px-8 py-8 lg:py-16">
     <mat-icon class="text-accent mb-5">task_alt</mat-icon>
-    <h6>Completed orders</h6>
-    <div class="count mb-3 mt-5">10</div>
+    <h6>Net Revenue</h6>
+    <div class="count mb-3 mt-5">{{dashboarddata.totalUsers}}</div>
     <a [routerLink]="'/dashboard/orders'" class="font-semibold" mat-flat-button color="warn">View All</a>
   </div>
 </div>
@@ -25,7 +25,7 @@
 			<thead>
 				<tr class="border text-left">
 					<th>
-						<span class="text-gray-800">Id</span>
+						<span class="text-gray-800">Id </span>
 					</th>
 					<th>
 						<span class="text-gray-800">Title</span>

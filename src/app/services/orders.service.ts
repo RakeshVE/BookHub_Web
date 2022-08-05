@@ -37,4 +37,7 @@ export class OrdersService {
   stripePayments(bodyString:any){
     return this.http.post(this.baseUrl+'Orders/StripePayment', bodyString);
   }
+  getOrdersDetails(){
+    return this.http.get(this.baseUrl + 'Orders/GetOrders' );
+  }
 }
