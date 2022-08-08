@@ -5,23 +5,26 @@
               <thead>
                   <tr>
                       <th>OrderId</th>
-                      <th>Book Id</th> 
-                      <th>Email</th>                       
-                      <th>Phone</th>
+                      <!-- <th>Book Id</th>  -->
+                      <th>Book Name</th>                       
+                      <th>Our Price</th>
                      
-                      <th>Status</th>
+                      <th>ProductType</th>
+                      <th>status</th>
                   </tr>
               </thead>
               <tbody>
                   <tr *ngFor="let product of Orderdata | paginate: { itemsPerPage: 10, currentPage: p }">
                       <td>{{product.orderId}}</td>
-                      <td>{{product.bookId}}</td>
-                      <!-- <td>{{product.email}}</td>
-                      <td>{{product.phone}}</td>
-                      <td><mat-slide-toggle [checked]="product.isActive" ></mat-slide-toggle></td> -->
+                      <!-- <td>{{product.bookId}}</td> -->
+                      <td>{{product.bookName}}</td>
+                      <td>{{product.ourPrice}}</td>
+                      <td>{{product.productType}}</td>
+                      <td></td>
+                      <!-- <td><mat-slide-toggle [checked]="product.isActive" ></mat-slide-toggle></td>
                       <td><button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" [routerLink]="['/admin', product.bookId]">
                           <mat-icon>edit</mat-icon>
-                        </button></td>
+                        </button></td> -->
                      
                        
 

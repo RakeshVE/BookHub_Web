@@ -8,11 +8,11 @@ import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { AdminOrderComponent } from './admin-order/admin-order.component';
 
 const AdminChildrenRoute:Routes=[
-//   {
-//     path:'',
-//     pathMatch:'full',
-//     component:AdminIndexComponent
-// },
+  {
+    path:'',
+    pathMatch:'full',
+    component:AdminIndexComponent
+},
 {
   path:'AddBook',
   component:AdminAddbookComponent
