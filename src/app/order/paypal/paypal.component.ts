@@ -1,17 +1,17 @@
-import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
-import { variable } from '@angular/compiler/src/output/output_ast';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { OrdersService } from 'src/app/services/orders.service';
 import { UserService } from 'src/app/services/user.service';
-import { Router } from '@angular/router';
 
 declare var Razorpay: any;
+
 @Component({
-  selector: 'app-order-review',
-  templateUrl: './order-review.component.html',
-  styleUrls: ['./order-review.component.scss']
+  selector: 'app-paypal',
+  templateUrl: './paypal.component.html',
+  styleUrls: ['./paypal.component.scss']
 })
-export class OrderReviewComponent implements OnInit {
+export class PaypalComponent implements OnInit {
   userId: any; // passed hard-coded to be retrieved from local storage
   TotalPrice: any;
   productList: any = [];
@@ -52,6 +52,7 @@ export class OrderReviewComponent implements OnInit {
   };
   finalPay: any;
   shippingDetails: FormGroup;
+
   constructor(
     private userService: UserService,
     private orderService: OrdersService,
@@ -61,11 +62,46 @@ export class OrderReviewComponent implements OnInit {
 
   //Reference for paypal integration
   @ViewChild('paypalRef', { static: true }) private paypalRef: ElementRef;
-
   ngOnInit(): void {
     this.userId = parseInt(localStorage.getItem('mnd:uid'));
     this.buildForm();
     this.getCartDetails();
+
+    // For paypal integration
+    window.paypal
+      .Buttons({
+        style: {
+          layout: 'horizontal',
+          color: 'blue',
+          shape: 'rect',
+          label: 'paypal'
+        },
+
+        createOrder: (data, actions) => {
+          return actions.order.create({
+            purchase_units: [
+              {
+                amount: {
+                  value: this.taxData.finalPay
+                }
+              }
+            ]
+          });
+        },
+
+        onApprove: (data, actions) => {
+          return actions.order.capture().then(details => {
+            alert('Transaction completed');
+            this.router.navigate(['/products']);
+          });
+        },
+
+        onError: error => {
+          console.log(error);
+        }
+      })
+      .render(this.paypalRef.nativeElement);
+    // paypal integration completed
   }
 
   buildForm() {
@@ -96,7 +132,7 @@ export class OrderReviewComponent implements OnInit {
   //   AddressType: new FormControl('', Validators.required),
   // })
   validateControl(controllerName: string) {
-    debugger;
+    // debugger;
     if (this.shippingDetails.get(controllerName)?.invalid && this.shippingDetails.get(controllerName)?.touched) {
       return true;
     } else {
@@ -108,7 +144,7 @@ export class OrderReviewComponent implements OnInit {
   }
   getCartDetails() {
     this.userService.GetItemToCart(this.userId).subscribe((data: any) => {
-      debugger;
+      // debugger;
       this.TotalPrice = 0;
       this.productList = data;
       for (var i = 0; i < this.productList.length; i++) {
@@ -202,6 +238,15 @@ export class OrderReviewComponent implements OnInit {
     this.userService.EmptyToCart(this.userId).subscribe();
   }
 
+  paywithpaypal() {
+    if (this.shippingDetails.invalid) {
+      this.shippingDetails.markAllAsTouched();
+    } else {
+      this.router.navigate(['/Review/paypal']);
+      this.emptyCart();
+    }
+  }
+
   checkout() {
     debugger;
     if (this.shippingDetails.invalid) {
@@ -237,15 +282,6 @@ export class OrderReviewComponent implements OnInit {
       console.log('Stripe Result ', res);
     });
     this.afterPayments();
-  }
-
-  paywithpaypal() {
-    if (this.shippingDetails.invalid) {
-      this.shippingDetails.markAllAsTouched();
-    } else {
-      this.router.navigate(['/Review/paypal']);
-      this.emptyCart();
-    }
   }
 
   stripeCheckout(productName: string, amount: number, tokenCallback) {

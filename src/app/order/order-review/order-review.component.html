@@ -1,118 +1,147 @@
-  <div class="container mt-32">  
- 
-<div class="d-flex">  
-  <form action="" method="" novalidate [formGroup]="shippingDetails">  
-    <div class="title ml-3">  
-      <h2> Shipping Details</h2>  
-  </div>  
-  <br>
-    <label>  
-      <span class="fname"> First Name <span class="required"> * </span></span>  
-      <input type="text" name="fname" required placeholder="Enter your First Name" formControlName="FirstName"> 
-      <div class="error" *ngIf="validateControl('FirstName') && errorHandling('FirstName','required')">This field is required</div>
-    </label>  
-    <label>  
-      <span class="lname"> Last Name <span class="required">*</span> </span>  
-      <input type="text" name="lname" placeholder="Enter your Last Name" formControlName="LastName"> 
-      <div class="error" *ngIf="validateControl('LastName') && errorHandling('Address','required')">This field is required</div>
-       
-    </label>  
-     
-    <label>  
-      <span> Address <span class="required"> * </span></span>  
-      <input type="text" name="address" placeholder="Enter your address"  formControlName="Address">  
-      <div class="error" *ngIf="validateControl('Address') && errorHandling('Address','required')">This field is required</div>
-    </label>   
-    <label>  
-      <span> Town / City <span class="required">*</span></span>  
-      <input type="text" name="city" placeholder="Enter your City" formControlName="City">   
-      <div class="error" *ngIf="validateControl('City') && errorHandling('City','required')">This field is required</div>
-    </label>  
-    <label>  
-      <span> State <span class="required">*</span></span>  
-      <input type="text" name="state" placeholder="Enter your State" formControlName="State">  
-      <div class="error" *ngIf="validateControl('State') && errorHandling('State','required')">This field is required</div> 
-    </label>  
-    <label>  
-      <span> Country <span class="required">*</span></span>  
-      <input type="text" name="country" placeholder="Enter your Country" formControlName="Country">   
-      <div class="error" *ngIf="validateControl('Country') && errorHandling('Country','required')">This field is required</div>
-    </label> 
-    <label>  
-      <span> Postcode / ZIP <span class="required">*</span></span>  
-      <input type="text" name="zip" placeholder="Enter your Zip Code" formControlName="ZipCode">   
-      <div class="error" *ngIf="validateControl('ZipCode') && errorHandling('ZipCode','required')">This field is required</div>
-      <div class="error" *ngIf="validateControl('ZipCode') && errorHandling('ZipCode','minlength')">ZipCode length should be 10 digit</div>
-      <div class="error" *ngIf="validateControl('ZipCode') && errorHandling('ZipCode','maxlength')">ZipCode length should be 10 digit </div>
-    </label>  
-    <label>  
-      <span> Phone No. <span class="required">*</span></span>  
-      <input type="tel" name="phone" placeholder="Enter your Contact Details" formControlName="Phone">   
-      <div class="error" *ngIf="validateControl('Phone') && errorHandling('Phone','required')">This field is required</div>
-      <div class="error" *ngIf="validateControl('Phone') && errorHandling('Phone','minlength')">Phone length should be 10 digit</div>
-      <div class="error" *ngIf="validateControl('Phone') && errorHandling('Phone','maxlength')">Phone length should be 10 digit </div>
-    </label>  
-    <label>  
-      <span>Address Type <span class="required">*</span></span>  
-      <select name="addtype" formControlName="AddressType">  
-        <option value="select"> Address Type.. </option>  
-        <option value="Residential">Residential</option>  
-        <option value="Commercial">Commercial</option> 
-      </select> 
-      <div class="error" *ngIf="validateControl('AddressType') && errorHandling('AddressType','required')">This field is required </div>
-    </label> 
-  </form>
+<div class="container mt-32">
+  <div class="d-flex">
+    <form action="" method="" novalidate [formGroup]="shippingDetails">
+      <div class="title ml-3">
+        <h2>Shipping Details</h2>
+      </div>
+      <br />
+      <label>
+        <span class="fname"> First Name <span class="required"> * </span></span>
+        <input type="text" name="fname" required placeholder="Enter your First Name" formControlName="FirstName" />
+        <div class="error" *ngIf="validateControl('FirstName') && errorHandling('FirstName', 'required')">
+          This field is required
+        </div>
+      </label>
+      <label>
+        <span class="lname"> Last Name <span class="required">*</span> </span>
+        <input type="text" name="lname" placeholder="Enter your Last Name" formControlName="LastName" />
+        <div class="error" *ngIf="validateControl('LastName') && errorHandling('Address', 'required')">
+          This field is required
+        </div>
+      </label>
 
-  <div class="Yorder">
-    <table class="table">
-      <colgroup>
-        <col style="width: 180px;">
-        <col style="width: 40px;">
-        <col style="width: 20px;">
-        <col style="width: 70px;">
-      </colgroup>
-      <tr>
-        <th >Product
-        </th>
-        <th>Rate
-        </th>
-        <th>Quantity
-        </th>
-        <th>Total
-        </th>
-      </tr>
-      <tr *ngFor="let product of productList">
-        <td> {{product.title}} </td>
-        <td> ₹{{product.ourPrice | number : '1.2-2'}} </td>
-        <td> {{product.quantity}} </td>
-        <td> ₹{{product.cartTotal | number : '1.2-2'}} </td>
-      </tr>
-      <tr>
-        <td> Subtotal </td>
-        <td></td>
-        <td></td>
-        <td> <b>₹{{TotalPrice | number : '1.2-2'}}</b></td>
-      </tr>
-      <tr>
-        <td> Shipping </td>
-        <td>  </td>
-        <td></td>
-        <td> <b>₹{{taxData.shipping | number : '1.2-2'}}</b></td>
-      </tr>
-      <tr>
-        <td> Tax </td>
-        <td>  </td>
-        <td></td>
-        <td><b>₹{{taxData.tax | number : '1.2-2'}}</b></td>
-      </tr>
-      <tr>
-        <td> Total </td>
-        <td>  </td>
-        <td></td>
-        <td><b>₹{{taxData.finalPay | number : '1.2-2'}}</b></td>
-      </tr>
-    </table><br>
-    <!-- <div>
+      <label>
+        <span> Address <span class="required"> * </span></span>
+        <input type="text" name="address" placeholder="Enter your address" formControlName="Address" />
+        <div class="error" *ngIf="validateControl('Address') && errorHandling('Address', 'required')">
+          This field is required
+        </div>
+      </label>
+      <label>
+        <span> Town / City <span class="required">*</span></span>
+        <input type="text" name="city" placeholder="Enter your City" formControlName="City" />
+        <div class="error" *ngIf="validateControl('City') && errorHandling('City', 'required')">
+          This field is required
+        </div>
+      </label>
+      <label>
+        <span> State <span class="required">*</span></span>
+        <input type="text" name="state" placeholder="Enter your State" formControlName="State" />
+        <div class="error" *ngIf="validateControl('State') && errorHandling('State', 'required')">
+          This field is required
+        </div>
+      </label>
+      <label>
+        <span> Country <span class="required">*</span></span>
+        <input type="text" name="country" placeholder="Enter your Country" formControlName="Country" />
+        <div class="error" *ngIf="validateControl('Country') && errorHandling('Country', 'required')">
+          This field is required
+        </div>
+      </label>
+      <label>
+        <span> Postcode / ZIP <span class="required">*</span></span>
+        <input type="text" name="zip" placeholder="Enter your Zip Code" formControlName="ZipCode" />
+        <div class="error" *ngIf="validateControl('ZipCode') && errorHandling('ZipCode', 'required')">
+          This field is required
+        </div>
+        <div class="error" *ngIf="validateControl('ZipCode') && errorHandling('ZipCode', 'minlength')">
+          ZipCode length should be 10 digit
+        </div>
+        <div class="error" *ngIf="validateControl('ZipCode') && errorHandling('ZipCode', 'maxlength')">
+          ZipCode length should be 10 digit
+        </div>
+      </label>
+      <label>
+        <span> Phone No. <span class="required">*</span></span>
+        <input type="tel" name="phone" placeholder="Enter your Contact Details" formControlName="Phone" />
+        <div class="error" *ngIf="validateControl('Phone') && errorHandling('Phone', 'required')">
+          This field is required
+        </div>
+        <div class="error" *ngIf="validateControl('Phone') && errorHandling('Phone', 'minlength')">
+          Phone length should be 10 digit
+        </div>
+        <div class="error" *ngIf="validateControl('Phone') && errorHandling('Phone', 'maxlength')">
+          Phone length should be 10 digit
+        </div>
+      </label>
+      <label>
+        <span>Address Type <span class="required">*</span></span>
+        <select name="addtype" formControlName="AddressType">
+          <option value="select">Address Type..</option>
+          <option value="Residential">Residential</option>
+          <option value="Commercial">Commercial</option>
+        </select>
+        <div class="error" *ngIf="validateControl('AddressType') && errorHandling('AddressType', 'required')">
+          This field is required
+        </div>
+      </label>
+    </form>
+
+    <div class="Yorder">
+      <table class="table">
+        <colgroup>
+          <col style="width: 180px" />
+          <col style="width: 40px" />
+          <col style="width: 20px" />
+          <col style="width: 70px" />
+        </colgroup>
+        <tr>
+          <th>Product</th>
+          <th>Rate</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+        <tr *ngFor="let product of productList">
+          <td>{{ product.title }}</td>
+          <td>₹{{ product.ourPrice | number: '1.2-2' }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>₹{{ product.cartTotal | number: '1.2-2' }}</td>
+        </tr>
+        <tr>
+          <td>Subtotal</td>
+          <td></td>
+          <td></td>
+          <td>
+            <b>₹{{ TotalPrice | number: '1.2-2' }}</b>
+          </td>
+        </tr>
+        <tr>
+          <td>Shipping</td>
+          <td></td>
+          <td></td>
+          <td>
+            <b>₹{{ taxData.shipping | number: '1.2-2' }}</b>
+          </td>
+        </tr>
+        <tr>
+          <td>Tax</td>
+          <td></td>
+          <td></td>
+          <td>
+            <b>₹{{ taxData.tax | number: '1.2-2' }}</b>
+          </td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td></td>
+          <td></td>
+          <td>
+            <b>₹{{ taxData.finalPay | number: '1.2-2' }}</b>
+          </td>
+        </tr>
+      </table>
+      <br />
+      <!-- <div>
       <input type="radio" name="dbt" value="dbt" checked> Direct Bank Transfer
     </div>
     <p>
@@ -126,8 +155,12 @@
       </span>
     </div>   -->
       <button type="button" (click)="makePayment()">Pay With RazorPay</button>
-      <br><br>
-      <button type="button" (click)="checkout()">Pay With Stripe</button>
+      <br /><br />
+      <button type="button" (click)="checkout()">Pay With Stripe</button><br /><br />
+      <button type="button" (click)="paywithpaypal()">Pay With Paypal</button>
+
+      <!-- paypal button integration -->
+      <!-- <div #paypalRef></div> -->
     </div>
   </div>
 </div>

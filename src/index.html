@@ -3,18 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <base href="/" />
-    <title>Mindhub</title>
+    <title>Book-Hub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <!-- script for paypal integration -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AcPxvKOPOdb1rWOIUTdZzjGoKtfQz4FxnmnoRk439XbFindN6WkcZaNOBbeBhpSd9O9KWm9s03Jr-lSL"></script>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -31,10 +33,12 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script type="text/javascript" src="https://js.stripe.com/v2/" ></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script src="https://checkout.stripe.com/checkout.js"></script>
     <script type="text/javascript">
-      Stripe.setPublishableKey('pk_test_51LLNGNSBVnjJH0yCQcL6tPtycsmOKoln5rOHPgzy1aM7RZjwLtet1Nul9BbnA2v71chpKvBBp2WjLG7n62Dxm5LU002lP0BIKB');
+      Stripe.setPublishableKey(
+        'pk_test_51LLNGNSBVnjJH0yCQcL6tPtycsmOKoln5rOHPgzy1aM7RZjwLtet1Nul9BbnA2v71chpKvBBp2WjLG7n62Dxm5LU002lP0BIKB'
+      );
     </script>
   </head>
   <body class="bg-light">
