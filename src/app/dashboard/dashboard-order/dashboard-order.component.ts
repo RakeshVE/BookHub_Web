@@ -10,12 +10,14 @@ import { UserService } from 'src/app/services/user.service';
 export class DashboardOrderComponent implements OnInit {
 
   public orderDetails: any;
-  userId : any = 1; //passed hard-coded to be taken from local storage
+  userId : any;
+  
   ordersPlaced: any = [];
 
   constructor(private orderService: OrdersService) {}
 
   ngOnInit(): void {
+    this.userId=parseInt(localStorage.getItem('mnd:uid'));
     this.getOrdersPlaced();
   }
 

@@ -8,11 +8,12 @@ import { OrdersService } from 'src/app/services/orders.service';
 })
 export class DashboardIndexComponent implements OnInit {
   latestOrders : any = [];
-  userId: any = 1; //to be taken from local storge
+  userId: any ;
 
   constructor(private orderService: OrdersService) {}
 
   ngOnInit(): void {
+    this.userId=parseInt(localStorage.getItem('mnd:uid'));
    this.getLatestOrders();
   }
 
