@@ -6,12 +6,17 @@ import { AdminEditbookComponent } from './admin-editbook/admin-editbook.componen
 import { AdminIndexComponent } from './admin-index/admin-index.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { AdminOrderComponent } from './admin-order/admin-order.component';
+import { AdminUsermanagementComponent } from './admin-usermanagement/admin-usermanagement.component';
 
 const AdminChildrenRoute:Routes=[
   {
     path:'',
     pathMatch:'full',
     component:AdminIndexComponent
+},
+{
+  path:'UserManagement',
+  component:AdminUsermanagementComponent
 },
 {
   path:'AddBook',

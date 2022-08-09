@@ -1,10 +1,17 @@
-<div class="example-container">
+<div class="example-container mt-8" >
   <form [formGroup]="addBook" (ngSubmit)="updateDetails(addBook)">
     <div class="row">
-        <div class="col-lg-4 mt-4">
+       
+        <div class="col-lg-4 mt-6">
+            <mat-form-field >
+                <mat-label>Book Id</mat-label>
+                <input matInput maxlength="400" inputmode="tel" placeholder="Book Id" disabled [(ngModel)]="bookDetails.bookId" formControlName="bookid" #bookidInput>
+                
+            </mat-form-field>
+          </div> <div class="col-lg-4 mt-6">
       <mat-form-field >
           <mat-label>Book Name</mat-label>
-          <input matInput maxlength="400" inputmode="tel" placeholder="Type name" formControlName="title" #nameInput>
+          <input matInput maxlength="400" inputmode="tel" placeholder="Type name" [(ngModel)]="bookDetails.title" formControlName="title" #nameInput>
           <mat-hint>Mini character 10: {{ nameInput.value.length }}/400</mat-hint>
           <mat-error *ngIf="validateControl('title') && errorHandling('title','required')">This field is required</mat-error>
           <mat-error *ngIf="validateControl('title') && errorHandling('title','minlength')">Book Length should be min 10 char</mat-error>
@@ -14,7 +21,7 @@
     <div class="col-lg-4 mt-4">
       <mat-form-field >
         <mat-label>Our Price</mat-label>
-        <input matInput maxlength="5" inputmode="numeric" placeholder="Our Price" formControlName="ourprice" #ourpriceInput>
+        <input matInput maxlength="5" inputmode="numeric" [(ngModel)]="bookDetails.ourPrice" placeholder="Our Price" formControlName="ourprice" #ourpriceInput>
         <!-- <mat-hint>Mini character 10: {{ nameInput.value.length }}/10</mat-hint> -->
         <mat-error>Price is required</mat-error>
         <mat-error *ngIf="validateControl('ourprice') && errorHandling('ourprice','pattern')">Please enter numbers only !</mat-error>
@@ -23,7 +30,7 @@
 <div class="col-lg-4 mt-4">
       <mat-form-field >
         <mat-label>List Price</mat-label>
-        <input matInput maxlength="5" inputmode="tel" placeholder="Type price" formControlName="listprice" #listpriceInput>
+        <input matInput maxlength="5" inputmode="tel" [(ngModel)]="bookDetails.listPrice" placeholder="Type price" formControlName="listprice" #listpriceInput>
         <!-- <mat-hint>Mini character 10: {{ nameInput.value.length }}/10</mat-hint> -->
         <mat-error>Price is required</mat-error>
         <mat-error *ngIf="validateControl('listprice') && errorHandling('listprice','pattern')">Please enter numbers only !</mat-error>
@@ -32,7 +39,7 @@
 <div class="col-lg-4 mt-4">
     <mat-form-field >
         <mat-label>Product Type</mat-label>
-        <input matInput maxlength="50" inputmode="text" placeholder="Type Product Type" formControlName="producttype" #producttypeInput>
+        <input matInput maxlength="50" inputmode="text" [(ngModel)]="bookDetails.productType" placeholder="Type Product Type" formControlName="producttype" #producttypeInput>
         <!-- <mat-hint>Mini character 10: {{ nameInput.value.length }}/10</mat-hint> -->
         <mat-error>Product Type is required</mat-error>
         <!-- <mat-error *ngIf="form.controls['name'].errors?.['minlength']">
@@ -43,7 +50,7 @@
 <div class="col-lg-4 mt-4">
     <mat-form-field >
         <mat-label>Menu Id</mat-label>
-        <input matInput maxlength="5" inputmode="tel" placeholder="Type Menu Id" formControlName="menuid" #menuidInput>
+        <input matInput maxlength="5" inputmode="tel" [(ngModel)]="bookDetails.menuId" placeholder="Type Menu Id" formControlName="menuid" #menuidInput>
         <!-- <mat-hint>Mini character 10: {{ nameInput.value.length }}/10</mat-hint> -->
         <mat-error>Menu Id is required</mat-error>
         <mat-error *ngIf="validateControl('menuid') && errorHandling('menuid','pattern')">Please enter numbers only !</mat-error>
@@ -52,7 +59,7 @@
 <div class="col-lg-4 mt-4">
     <mat-form-field >
         <mat-label>Rating</mat-label>
-        <input matInput maxlength="15" inputmode="tel" placeholder="Rating" formControlName="rating" #ratingInput>
+        <input matInput maxlength="15" inputmode="tel" [(ngModel)]="bookDetails.rating" placeholder="Rating" formControlName="rating" #ratingInput>
         <!-- <mat-hint>Mini character 10: {{ nameInput.value.length }}/10</mat-hint> -->
         <mat-error>Rating is required</mat-error>
         <mat-error *ngIf="validateControl('rating') && errorHandling('rating','pattern')">Please enter numbers only !</mat-error>
@@ -61,7 +68,7 @@
 <div class="col-lg-4 mt-4">
     <mat-form-field >
         <mat-label>Content Type</mat-label>
-        <input matInput maxlength="50" inputmode="text" placeholder="Type Content Type" formControlName="contenttype" #conttenttypeInput>
+        <input matInput maxlength="50" inputmode="text" [(ngModel)]="bookDetails.contentType" placeholder="Type Content Type" formControlName="contenttype" #conttenttypeInput>
         <!-- <mat-hint>Mini character 10: {{ nameInput.value.length }}/10</mat-hint> -->
         <mat-error>Content Type is required</mat-error>
         <!-- <mat-error *ngIf="form.controls['name'].errors?.['minlength']">
@@ -72,7 +79,7 @@
 <div class="col-lg-4 mt-4">
     <mat-form-field  >
         <mat-label>Certification</mat-label>
-        <input matInput maxlength="50" inputmode="tel" placeholder="Type Certification" formControlName="certification" #certificationInput>
+        <input matInput maxlength="50" inputmode="tel" [(ngModel)]="bookDetails.certification" placeholder="Type Certification" formControlName="certification" #certificationInput>
         <!-- <mat-hint>Mini character 10: {{ nameInput.value.length }}/10</mat-hint> -->
         <mat-error>Certification is required</mat-error>
         <!-- <mat-error *ngIf="form.controls['name'].errors?.['minlength']">
@@ -83,7 +90,7 @@
 <div class="col-lg-4 mt-4">
     <mat-form-field  >
         <mat-label>Publisher</mat-label>
-        <input matInput maxlength="50" inputmode="tel" placeholder="Type Publisher" formControlName="publisher" #publisherInput>
+        <input matInput maxlength="50" inputmode="tel" [(ngModel)]="bookDetails.publisher" placeholder="Type Publisher" formControlName="publisher" #publisherInput>
         <!-- <mat-hint>Mini character 10: {{ nameInput.value.length }}/10</mat-hint> -->
         <mat-error>Publisher is required</mat-error>
         <!-- <mat-error *ngIf="form.controls['name'].errors?.['minlength']">
@@ -91,7 +98,7 @@
         </mat-error> -->
     </mat-form-field>
 </div>
-<div class="col-lg-4 mt-4">
+<!-- <div class="col-lg-4 mt-4">
     <mat-form-field >
         <mat-label>Email Address:</mat-label>
         <input matInput type="email" formControlName="email" placeholder="Your email">
@@ -100,31 +107,31 @@
         <mat-error>Email is required</mat-error>
         <mat-error *ngIf="validateControl('email') && errorHandling('email','pattern')">Please enter valid email address</mat-error>
     </mat-form-field>
-</div>
+</div> -->
 <div class="col-lg-4 mt-4">
     <mat-form-field  >
       <mat-label>Details:</mat-label>
-      <textarea matInput placeholder="Type Details" rows="1" formControlName="details"></textarea>
+      <textarea matInput placeholder="Type Details" [(ngModel)]="bookDetails.details" rows="1" formControlName="details"></textarea>
   </mat-form-field>
 </div>
 <div class="col-lg-4 mt-4">
     <mat-form-field >
           <mat-label>Description:</mat-label>
-          <textarea matInput placeholder="Description" rows="1" formControlName="description"></textarea>
+          <textarea matInput placeholder="Description" [(ngModel)]="bookDetails.description" rows="1" formControlName="description"></textarea>
       </mat-form-field>
 </div>
 
 <div class="col-lg-4 mt-4">
       <mat-form-field >
         <mat-label>System Requirement:</mat-label>
-        <textarea matInput placeholder="System Requirement" rows="1" formControlName="SystemReq"></textarea>
+        <textarea matInput placeholder="System Requirement" [(ngModel)]="bookDetails.systemReq" rows="1" formControlName="SystemReq"></textarea>
     </mat-form-field>
     </div>
 
     <div class="col-lg-4 mt-4">
     <mat-form-field  >
         <mat-label>Demo:</mat-label>
-        <textarea matInput placeholder="Demo" rows="1" formControlName="demo"></textarea>
+        <textarea matInput placeholder="Demo" rows="1" [(ngModel)]="bookDetails.demo" formControlName="demo"></textarea>
     </mat-form-field>
      </div>
      
@@ -145,10 +152,14 @@
     </mat-form-field>
 </div> -->
 
-      <div class="col-lg-12 text-right">
-          <button mat-raised-button color="primary" type="submit" >Submit</button>
+      <div class="col-lg-6 text-right">
+          <button mat-raised-button color="primary" type="submit" >Update</button>
       </div>
+      <div class="col-lg-6 text-left">
+        <button mat-raised-button color="primary" type="button" [routerLink]="['/admin/BookList']" >Cancel</button>
+    </div>
       </div>
   </form>
+  
   <!-- <div>{{ form.value | json }}</div> -->
 </div>

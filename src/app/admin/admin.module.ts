@@ -9,6 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SharedModule } from '../shared/shared.module';
+import { MatPaginatorModule } from "@angular/material/paginator";
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminIndexComponent } from './admin-index/admin-index.component';
@@ -23,6 +24,7 @@ import { AdminEditbookComponent } from './admin-editbook/admin-editbook.componen
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AdminService } from '../services/admin.service';
 import { AdminOrderComponent } from './admin-order/admin-order.component';
+import { AdminUsermanagementComponent } from './admin-usermanagement/admin-usermanagement.component';
 
 
 
@@ -33,7 +35,7 @@ import { AdminOrderComponent } from './admin-order/admin-order.component';
     AdminAddbookComponent,
     AdminBooklistComponent,
     AdminEditbookComponent,
-    AdminOrderComponent
+    AdminOrderComponent,AdminUsermanagementComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,7 @@ import { AdminOrderComponent } from './admin-order/admin-order.component';
     MatSortModule,
     MatButtonModule,
     MatToolbarModule,
-    TableModule,ButtonModule,NgxPaginationModule,MatSlideToggleModule
+    TableModule,ButtonModule,NgxPaginationModule,MatSlideToggleModule,MatPaginatorModule
   ],
   providers:[AdminService]
 })

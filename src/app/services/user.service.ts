@@ -17,6 +17,13 @@ export class UserService {
   //   return this.httpClient.get<Bookdetail[]>(this.baseAPIurl + 'api/Books/GetBookById?id='+data);
   //   debugger
   // }
+  getAllUsers(){
+    return this.httpClient.get(this.baseAPIurl+"Users/GetUsers")
+  }
+
+  deactivateUser(userid:any){
+    return this.httpClient.get(this.baseAPIurl+"Users/DeactivateUser?userId="+userid);
+  }
   AddToCart(object:any) {
     debugger
     return this.httpClient.post(this.baseAPIurl + "Cart/AddToCart" ,object);

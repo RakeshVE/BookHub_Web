@@ -1,5 +1,5 @@
 export interface BookDetails{
-  bookid:number;
+  bookId:number;
   title:string;
   image:string;
   listPrice:number;

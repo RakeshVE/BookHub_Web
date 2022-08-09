@@ -52,6 +52,10 @@ export class BookserviceService {
     return this.http.get(this.baseUrl+'Books/SerachBook?bookName='+bookName );
   }
 
+  editBook(form:FormData){
+    return this.http.post(this.baseUrl+ 'Books/UpdateBook', form)
+  }
+
   setStatus(bookId:any){
    return this.http.get(this.baseUrl+'Books/UpdateStatus?bookId='+bookId );
   }
