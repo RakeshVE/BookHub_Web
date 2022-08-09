@@ -3,19 +3,19 @@
     <mat-icon class="text-accent mb-5"></mat-icon>
     <h6>Total  Users</h6>
     <div class="count mb-3 mt-5">{{dashboarddata.totalUsers}}</div>
-    <a [routerLink]="'/dashboard/saved-items'" class="font-semibold" mat-flat-button color="warn">View All</a>
+    <a [routerLink]="'/admin/UserManagement'" class="font-semibold" mat-flat-button color="warn">View All</a>
   </div>
   <div class="col-span-6 md:col-span-4 border rounded px-4 lg:px-8 py-8 lg:py-16">
     <mat-icon class="text-accent mb-5">sync</mat-icon>
     <h6>Total Sales</h6>
-    <div class="count mb-3 mt-5">{{dashboarddata.totalSales}}</div>
-    <a [routerLink]="'/dashboard/orders'" class="font-semibold" mat-flat-button color="warn">View All</a>
+    <div class="count mb-3 mt-5">₹{{dashboarddata.totalSales| number : '1.2-2'}}</div>
+    <a [routerLink]="'/admin/Order'" class="font-semibold" mat-flat-button color="warn">View All</a>
   </div>
   <div class="col-span-6 md:col-span-4 border rounded px-4 lg:px-8 py-8 lg:py-16">
     <mat-icon class="text-accent mb-5">task_alt</mat-icon>
-    <h6>Net Revenue</h6>
-    <div class="count mb-3 mt-5">{{dashboarddata.totalUsers}}</div>
-    <a [routerLink]="'/dashboard/orders'" class="font-semibold" mat-flat-button color="warn">View All</a>
+    <h6>Total item sale</h6>
+    <div class="count mb-3 mt-5">{{dashboarddata.totalItemSale}}</div>
+    <a [routerLink]="'/admin/Order'" class="font-semibold" mat-flat-button color="warn">View All</a>
   </div>
 </div>
 <!-- <div class="mt-8">

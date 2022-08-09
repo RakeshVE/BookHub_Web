@@ -8,7 +8,7 @@
                       <!-- <th>Book Id</th>  -->
                       <th>Book Name</th>                       
                       <th>Our Price</th>
-                     
+                     <th>Date</th>
                       <th>ProductType</th>
                       <th>status</th>
                   </tr>
@@ -18,7 +18,8 @@
                       <td>{{product.orderId}}</td>
                       <!-- <td>{{product.bookId}}</td> -->
                       <td>{{product.bookName}}</td>
-                      <td>{{product.ourPrice}}</td>
+                      <td>₹{{product.ourPrice| number : '1.2-2'}}</td>
+                      <td>{{product.createdOn}}</td>
                       <td>{{product.productType}}</td>
                       <td></td>
                       <!-- <td><mat-slide-toggle [checked]="product.isActive" ></mat-slide-toggle></td>
