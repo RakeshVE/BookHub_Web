@@ -60,8 +60,10 @@ export class PaypalComponent implements OnInit {
     private router: Router
   ) {}
 
+  paypalmsg: 'Payment Successfull';
   //Reference for paypal integration
   @ViewChild('paypalRef', { static: true }) private paypalRef: ElementRef;
+
   ngOnInit(): void {
     this.userId = parseInt(localStorage.getItem('mnd:uid'));
     this.buildForm();
@@ -132,7 +134,6 @@ export class PaypalComponent implements OnInit {
   //   AddressType: new FormControl('', Validators.required),
   // })
   validateControl(controllerName: string) {
-    // debugger;
     if (this.shippingDetails.get(controllerName)?.invalid && this.shippingDetails.get(controllerName)?.touched) {
       return true;
     } else {
@@ -144,7 +145,6 @@ export class PaypalComponent implements OnInit {
   }
   getCartDetails() {
     this.userService.GetItemToCart(this.userId).subscribe((data: any) => {
-      // debugger;
       this.TotalPrice = 0;
       this.productList = data;
       for (var i = 0; i < this.productList.length; i++) {
@@ -248,7 +248,6 @@ export class PaypalComponent implements OnInit {
   }
 
   checkout() {
-    debugger;
     if (this.shippingDetails.invalid) {
       this.shippingDetails.markAllAsTouched();
     } else {
@@ -263,7 +262,6 @@ export class PaypalComponent implements OnInit {
   }
 
   takePayment(productName: string, amount: number, token: any) {
-    debugger;
     console.log('token', token);
     let body = {
       tokenId: token.id,
