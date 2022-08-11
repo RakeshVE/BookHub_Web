@@ -51,7 +51,7 @@ export class AdminAddbookComponent implements OnInit {
     }
   }
   validateControl(controllerName:string){
-    debugger;
+    
         if(this.addBook.get(controllerName)?.invalid && this.addBook.get(controllerName)?.touched){
           return true
         }else

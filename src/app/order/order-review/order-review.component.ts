@@ -96,7 +96,7 @@ export class OrderReviewComponent implements OnInit {
   //   AddressType: new FormControl('', Validators.required),
   // })
   validateControl(controllerName: string) {
-    debugger;
+    
     if (this.shippingDetails.get(controllerName)?.invalid && this.shippingDetails.get(controllerName)?.touched) {
       return true;
     } else {
