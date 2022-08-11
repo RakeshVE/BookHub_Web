@@ -243,6 +243,7 @@ export class OrderReviewComponent implements OnInit {
     if (this.shippingDetails.invalid) {
       this.shippingDetails.markAllAsTouched();
     } else {
+      this.addOrderDetails(this.bookIds, this.userId, this.checkoutId);
       this.router.navigate(['/Review/paypal']);
       this.emptyCart();
     }
