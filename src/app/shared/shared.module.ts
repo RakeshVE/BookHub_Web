@@ -15,6 +15,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { HttpClientModule } from '@angular/common/http';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 const commonModules = [
   HttpClientModule,
@@ -30,6 +31,7 @@ const commonModules = [
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, FeatureComponent, BaseLayoutComponent, LoaderComponent, SidenavComponent],
   imports: [CommonModule, RouterModule, ...commonModules],
+  providers:[JwtHelperService],
   exports: [HeaderComponent, FooterComponent, BaseLayoutComponent, FeatureComponent, LoaderComponent, SidenavComponent, ...commonModules]
 })
 export class SharedModule {}

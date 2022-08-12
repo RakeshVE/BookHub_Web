@@ -6,6 +6,7 @@ import { AmazonLoginProvider, FacebookLoginProvider, GoogleLoginProvider, Micros
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/shared/data/user';
 import { MustMatch } from 'src/app/shared/helpers/must-match-validator';
+import jwt_decode from 'jwt-decode';
 
 
 @Component({
@@ -58,11 +59,17 @@ emailPattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
           (data: any) => {
             debugger
             this.users=data;
+            var decodedToken = jwt_decode(data.token);
             localStorage.setItem('mnd:uid', data.userId);
             localStorage.setItem('mnd:actkn', data.token);
             localStorage.setItem('mnd:uname', data.userName);
             localStorage.setItem('mnd:phone', data.phone);
             localStorage.setItem('mnd:isActive', data.isActive);
+            localStorage.setItem('mnd:exp',decodedToken['exp']);
+            // localStorage.setItem('mnd:uid',decodedToken['userId']);
+            // localStorage.setItem('mnd:uname',decodedToken['userName'] );
+            // localStorage.setItem('mnd:phone', decodedToken['phone'] );
+            // localStorage.setItem('mnd:isActive',decodedToken['isActive'] );
                // localStorage.setItem('ctm:reftkn', data);
                this.router.navigate(['/']);
           // alert("Login sucess");
