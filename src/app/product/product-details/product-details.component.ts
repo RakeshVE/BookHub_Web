@@ -134,7 +134,7 @@ AddToCart(){
   data => {
     debugger;
    
-    this.route.navigate(['/cart']);
+    //this.route.navigate(['/cart']);
    
   },
   error => {
