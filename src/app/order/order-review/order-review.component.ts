@@ -52,6 +52,10 @@ export class OrderReviewComponent implements OnInit {
   };
   finalPay: any;
   shippingDetails: FormGroup;
+  form = new FormGroup({
+    paymentRadion: new FormControl('', Validators.required)
+  });
+  formValue: any;
   constructor(
     private userService: UserService,
     private orderService: OrdersService,
@@ -66,8 +70,9 @@ export class OrderReviewComponent implements OnInit {
     this.userId = parseInt(localStorage.getItem('mnd:uid'));
     this.buildForm();
     this.getCartDetails();
+    
   }
-
+  
   buildForm() {
     this.shippingDetails = this.formBuilder.group({
       CheckoutId: [''],
@@ -96,12 +101,19 @@ export class OrderReviewComponent implements OnInit {
   //   AddressType: new FormControl('', Validators.required),
   // })
   validateControl(controllerName: string) {
-    
+    debugger;
     if (this.shippingDetails.get(controllerName)?.invalid && this.shippingDetails.get(controllerName)?.touched) {
       return true;
-    } else {
+    }
+    else if(controllerName=='paymentRadion'){
+      if(this.form.get(controllerName)?.invalid && this.form.get(controllerName)?.touched){
+      return true;
+      }
+    }
+    else {
       return false;
     }
+    
   }
   errorHandling(control: string, error: string) {
     return this.shippingDetails.controls[control].hasError(error);
@@ -265,5 +277,27 @@ export class OrderReviewComponent implements OnInit {
       panelLabel: 'Pay {{amount}}',
       allowRememberMe: false
     });
+  }
+  get f(){
+    return this.form.controls;
+  }
+  paynow(){
+    debugger;
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+    }else{
+    this.formValue=this.form.value
+    console.log("formValue",this.formValue);
+    if(this.formValue.paymentRadion =='razorpay'){
+      this.makePayment();
+    }
+    
+     else if(this.formValue.paymentRadion=='stripe'){
+      this.checkout();
+    } 
+    else if(this.formValue.paymentRadion=='paypal'){
+      this.paywithpaypal();
+    }
+  }
   }
 }
