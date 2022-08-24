@@ -61,7 +61,7 @@ export class OrderReviewComponent implements OnInit {
     private orderService: OrdersService,
     private formBuilder: FormBuilder,
     private router: Router
-  ) {}
+  ) { }
 
   //Reference for paypal integration
   @ViewChild('paypalRef', { static: true }) private paypalRef: ElementRef;
@@ -70,9 +70,9 @@ export class OrderReviewComponent implements OnInit {
     this.userId = parseInt(localStorage.getItem('mnd:uid'));
     this.buildForm();
     this.getCartDetails();
-    
+
   }
-  
+
   buildForm() {
     this.shippingDetails = this.formBuilder.group({
       CheckoutId: [''],
@@ -105,15 +105,15 @@ export class OrderReviewComponent implements OnInit {
     if (this.shippingDetails.get(controllerName)?.invalid && this.shippingDetails.get(controllerName)?.touched) {
       return true;
     }
-    else if(controllerName=='paymentRadion'){
-      if(this.form.get(controllerName)?.invalid && this.form.get(controllerName)?.touched){
-      return true;
+    else if (controllerName == 'paymentRadion') {
+      if (this.form.get(controllerName)?.invalid && this.form.get(controllerName)?.touched) {
+        return true;
       }
     }
     else {
       return false;
     }
-    
+
   }
   errorHandling(control: string, error: string) {
     return this.shippingDetails.controls[control].hasError(error);
@@ -278,26 +278,26 @@ export class OrderReviewComponent implements OnInit {
       allowRememberMe: false
     });
   }
-  get f(){
+  get f() {
     return this.form.controls;
   }
-  paynow(){
-    debugger;
+  paynow() {
+
     if (this.form.invalid) {
       this.form.markAllAsTouched();
-    }else{
-    this.formValue=this.form.value
-    console.log("formValue",this.formValue);
-    if(this.formValue.paymentRadion =='razorpay'){
-      this.makePayment();
+    } else {
+      this.formValue = this.form.value
+      console.log("formValue", this.formValue);
+      if (this.formValue.paymentRadion == 'razorpay') {
+        this.makePayment();
+      }
+
+      else if (this.formValue.paymentRadion == 'stripe') {
+        this.checkout();
+      }
+      else if (this.formValue.paymentRadion == 'paypal') {
+        this.paywithpaypal();
+      }
     }
-    
-     else if(this.formValue.paymentRadion=='stripe'){
-      this.checkout();
-    } 
-    else if(this.formValue.paymentRadion=='paypal'){
-      this.paywithpaypal();
-    }
-  }
   }
 }

@@ -9,36 +9,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-booklist.component.scss']
 })
 export class AdminBooklistComponent implements OnInit {
-  bookData:BookDetails[] = [];
+  bookData: BookDetails[] = [];
   p: number = 1;
   first = 0;
   rows = 10;
-  isActive:any;
-  constructor(private bookService: BookserviceService,private router:Router) { }
+  isActive: any;
+  constructor(private bookService: BookserviceService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllBooks();
   }
 
-  public updateBook=(id)=>{
+  public updateBook = (id) => {
     debugger;
-    const updateUrl:string='/adimn/EditBook';
+    const updateUrl: string = '/adimn/EditBook';
     this.router.navigate([updateUrl]);
   }
-  getAllBooks(){
-    debugger;
-    
-    this.bookService.getAllBooks().subscribe((data: any)=> {
+  getAllBooks() {
+
+    this.bookService.getAllBooks().subscribe((data: any) => {
       this.bookData = data;
-      this.isActive=data.isActive;
+      this.isActive = data.isActive;
       console.log('Bookdata', this.bookData);
     })
   }
-  setStatus(bookId:any){
+  setStatus(bookId: any) {
     debugger;
-    this.bookService.setStatus(bookId).subscribe((data: any)=> {
+    this.bookService.setStatus(bookId).subscribe((data: any) => {
       this.bookData = data;
-      this.isActive=data.isActive;
+      this.isActive = data.isActive;
       console.log('Bookdata', this.bookData);
     })
   }

@@ -5,38 +5,44 @@
         <a class="logo" [routerLink]="['']"><img src="assets/images/logo2.png" alt="Logo" height="100" width="100"></a>
         <ul class="flex item-center ml-5" *ngIf="!isLessThenLargeDevice && menuList && menuList.length">
           <li *ngFor="let menu of menuList">
-            <a mat-button [routerLink]="[menu.path]" routerLinkActive="bg-gray-100" class="text-lg font-bold py-2 px-5">{{ menu.name }}</a>
-          </li>
-          <li  *ngIf="username!=null && username!=''">
-            <a mat-button [routerLink]="['/dashboard']" routerLinkActive="bg-gray-100" class="text-lg font-bold py-2 px-5">Dashboard</a>
+            <a mat-button [routerLink]="[menu.path]" routerLinkActive="bg-gray-100"
+              class="text-lg font-bold py-2 px-5">{{ menu.name }}</a>
           </li>
           <li *ngIf="username!=null && username!=''">
-            <a mat-button [routerLink]="['/admin']" routerLinkActive="bg-gray-100" class="text-lg font-bold py-2 px-5">Admin</a>
+            <a mat-button [routerLink]="['/dashboard']" routerLinkActive="bg-gray-100"
+              class="text-lg font-bold py-2 px-5">Dashboard</a>
           </li>
           <li *ngIf="username!=null && username!=''">
-            <a mat-button [routerLink]="['/cart']" routerLinkActive="bg-gray-100" class="text-lg font-bold py-2 px-5">Cart</a>
+            <a mat-button [routerLink]="['/admin']" routerLinkActive="bg-gray-100"
+              class="text-lg font-bold py-2 px-5">Admin</a>
           </li>
+
+
+
         </ul>
       </div>
-      <button
-        *ngIf="isLessThenLargeDevice"
-        (click)="toggleSidenav.emit()"
-        class="_sidenav__toggler ml-auto md:ml-3 ms-sm-3"
-        mat-icon-button
-      >
+      <button *ngIf="isLessThenLargeDevice" (click)="toggleSidenav.emit()"
+        class="_sidenav__toggler ml-auto md:ml-3 ms-sm-3" mat-icon-button>
         <mat-icon>menu</mat-icon>
       </button>
       <div *ngIf="username==null ||  username==''" class="hidden items-center md:flex ml-auto">
         <a [routerLink]="['/auth/login']" mat-raised-button color="warn" class="text-lg font-bold py-2 px-5">Login</a>
-        <a [routerLink]="['/auth/signup']" mat-raised-button color="accent" class="text-lg font-bold py-2 px-5 ml-2">Join Now</a>
+        <a [routerLink]="['/auth/signup']" mat-raised-button color="accent"
+          class="text-lg font-bold py-2 px-5 ml-2">Join Now</a>
       </div>
       <div *ngIf="username!=null && username!=''" class="hidden items-center md:flex ml-auto">
         <a (click)="onLogout()" mat-raised-button color="warn" class="text-lg font-bold py-2 px-5">Logout</a>
+
       </div>
-     
+      <div *ngIf="username!=null && username!=''">
+        <a mat-button [routerLink]="['/cart']" routerLinkActive="bg-gray-100" class="text-lg font-bold py-2 px-5">
+          <mat-icon>shopping_cart</mat-icon><span>{{cartCount}}</span>
+        </a>
+      </div>
+
     </div>
     <div *ngIf="username!=null && username!=''">
-      <p class="text-right">Welcome: <span class="text-blue-500">{{username}}</span></p> 
-     </div>
+      <p class="text-right">Welcome: <span class="text-blue-500">{{username}}</span></p>
+    </div>
   </div>
 </header>
