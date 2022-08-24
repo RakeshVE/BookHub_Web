@@ -155,49 +155,53 @@
       </span>
     </div>   -->
 
-    <p>
-      <button class="btn btn-primary bi bi-arrow-down" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Payment Options <i class="bi bi-arrow-down"></i>
-      </button>
-    </p>
-    <div class="collapse" id="collapseExample">
-      <form [formGroup]="form" (ngSubmit)="paynow()">
-      <!-- <div class="card card-body"> -->
-        <!-- <button type="button" (click)="makePayment()">Pay With RazorPay</button>
+      <p>
+        <button class="btn btn-primary bi bi-arrow-down" type="button" data-toggle="collapse"
+          data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Payment Options <i class="bi bi-arrow-down"></i>
+        </button>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <form [formGroup]="form" (ngSubmit)="paynow()">
+          <!-- <div class="card card-body"> -->
+          <!-- <button type="button" (click)="makePayment()">Pay With RazorPay</button>
         <br /><br />
         <button type="button" (click)="checkout()">Pay With Stripe</button><br /><br />
         <button type="button" (click)="paywithpaypal()">Pay With Paypal</button> -->
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="paymentRadion" value="razorpay" id="paymentRazorpay" checked formControlName="paymentRadion" >
-          <label class="form-check-label" for="flexRadioDefault1">
-            <img src="assets/images/razorpay.png"  style="height:76px; width:143px;">
-          </label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="paymentRadion" value="razorpay" id="paymentRazorpay"
+              checked formControlName="paymentRadion">
+            <label class="form-check-label" for="flexRadioDefault1">
+              <img src="assets/images/razorpay.png" style="height:76px; width:143px;">
+            </label>
 
-        </div>
-        <div class="form-check form-check-inline" style=" margin-left: 76px;">
-          <input class="form-check-input" type="radio" name="paymentRadion" value="stripe" id="paymentStripe" formControlName="paymentRadion" >
-          <label class="form-check-label" for="flexRadioDefault2">
-            <img src="assets/images/stripe.png"  style="height:52px; width:155px;">
-          </label>
-        </div>
+          </div>
+          <div class="form-check form-check-inline" style=" margin-left: 76px;">
+            <input class="form-check-input" type="radio" name="paymentRadion" value="stripe" id="paymentStripe"
+              formControlName="paymentRadion">
+            <label class="form-check-label" for="flexRadioDefault2">
+              <img src="assets/images/stripe.png" style="height:52px; width:155px;">
+            </label>
+          </div>
 
-        
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="paymentRadion" value="paypal" id="paymentPaypal" formControlName="paymentRadion" >
-          <label class="form-check-label" for="flexRadioDefault2">
-            <img src="assets/images/paypal.png"  style="height:34px; width:108px;">
-          </label>
-        </div>
-  
-      <!-- </div> -->
-      <div *ngIf="f.paymentRadion.touched && f.paymentRadion.invalid" class="alert alert-danger">
-        Please Select Any Payment Gateway !        
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="paymentRadion" value="paypal" id="paymentPaypal"
+              formControlName="paymentRadion">
+            <label class="form-check-label" for="flexRadioDefault2">
+              <img src="assets/images/paypal.png" style="height:34px; width:108px;">
+            </label>
+          </div>
+
+          <!-- </div> -->
+          <div *ngIf="f.paymentRadion.touched && f.paymentRadion.invalid" class="alert alert-danger">
+            Please Select Any Payment Gateway !
+          </div>
+
+          <button type="submit" style="width:30%;margin-left:180px;">Pay Now</button>
+        </form>
       </div>
 
-      <button type="submit" style="width:30%;margin-left:180px;">Pay Now</button>
-    </form>
-    </div>
-      
       <!-- paypal button integration -->
       <!-- <div #paypalRef></div> -->
     </div>
