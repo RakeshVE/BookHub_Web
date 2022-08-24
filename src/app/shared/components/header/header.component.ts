@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   menuList = [];
   isLessThenLargeDevice;
   username:string;
+  exp:any;
   constructor(private breakpointObserver: BreakpointObserver,
     private router:Router) {}
 
@@ -30,11 +31,15 @@ export class HeaderComponent implements OnInit {
     //   // token valid
     //   this.username=localStorage.getItem('mnd:uname');
     // }
+     this.exp=localStorage.getItem('mnd:exp');
     if (this.tokenExpired(localStorage.getItem('mnd:actkn'))) {
+     // if ( this.exp < (new Date().getTime() + 1) / 1000) {
+        
       // token expired
       localStorage.setItem('mnd:uid',null);
             localStorage.setItem('mnd:uname', null);
             this.username=null;
+            this.router.navigate(['/']);
 
     } else {
       this.username=localStorage.getItem('mnd:uname');

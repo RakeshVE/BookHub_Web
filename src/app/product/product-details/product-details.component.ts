@@ -133,8 +133,10 @@ AddToCart(){
      
   data => {
     debugger;
-   
-   // this.route.navigate(['/cart']);
+
+   alert("Book add to cart sucessfully");
+    //this.route.navigate(['/cart']);
+
    
   },
   error => {
