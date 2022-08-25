@@ -300,4 +300,10 @@ export class OrderReviewComponent implements OnInit {
       }
     }
   }
+  PlacePay() {
+    // this.router.navigate(['/shiping']);
+    this.router.navigate(['/Review/shiping']);
+
+
+  }
 }

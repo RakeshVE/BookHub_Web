@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { OrderReviewComponent } from './order-review/order-review.component';
 import { PaypalComponent } from './paypal/paypal.component';
+import { ShippingDetailComponent } from './shipping-detail/shipping-detail.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'paypal',
     component: PaypalComponent
+  },
+  {
+    path: 'shiping',
+    component: ShippingDetailComponent
   }
   // {
   //   path: ':id',
@@ -26,4 +31,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class OrderRoutingModule {}
+export class OrderRoutingModule { }

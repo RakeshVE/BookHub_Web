@@ -1,6 +1,6 @@
 <div class="container mt-32">
   <div class="d-flex">
-    <form action="" method="" novalidate [formGroup]="shippingDetails">
+    <!-- <form action="" method="" novalidate [formGroup]="shippingDetails">
       <div class="title ml-3">
         <h2>Shipping Details</h2>
       </div>
@@ -85,7 +85,7 @@
           This field is required
         </div>
       </label>
-    </form>
+    </form> -->
 
     <div class="Yorder">
       <table class="table">
@@ -156,12 +156,16 @@
     </div>   -->
 
       <p>
-        <button class="btn btn-primary bi bi-arrow-down" type="button" data-toggle="collapse"
+        <!-- <button class="btn btn-primary bi bi-arrow-down" type="button" data-toggle="collapse"
           data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
           Payment Options <i class="bi bi-arrow-down"></i>
-        </button>
+        </button> -->
+        <button class="btn btn-primary bi bi-arrow-down" type="button" (click)="PlacePay()"
+          style="width:30%;margin-left:180px;">Continue</button>
+
       </p>
       <div class="collapse" id="collapseExample">
+        <!-- <form [formGroup]="form" (ngSubmit)="paynow()"> -->
         <form [formGroup]="form" (ngSubmit)="paynow()">
           <!-- <div class="card card-body"> -->
           <!-- <button type="button" (click)="makePayment()">Pay With RazorPay</button>
