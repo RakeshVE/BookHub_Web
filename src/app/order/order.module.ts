@@ -5,13 +5,15 @@ import { OrderReviewComponent } from './order-review/order-review.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaypalComponent } from './paypal/paypal.component';
 import { ShippingDetailComponent } from './shipping-detail/shipping-detail.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 @NgModule({
   declarations: [
     OrderReviewComponent,
     PaypalComponent,
-    ShippingDetailComponent
+    ShippingDetailComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,

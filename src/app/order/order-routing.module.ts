@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { OrderReviewComponent } from './order-review/order-review.component';
+import { PaymentComponent } from './payment/payment.component';
 import { PaypalComponent } from './paypal/paypal.component';
 import { ShippingDetailComponent } from './shipping-detail/shipping-detail.component';
 
@@ -20,6 +21,11 @@ const routes: Routes = [
   {
     path: 'shiping',
     component: ShippingDetailComponent
+  }
+  ,
+  {
+    path: 'payment',
+    component: PaymentComponent
   }
   // {
   //   path: ':id',

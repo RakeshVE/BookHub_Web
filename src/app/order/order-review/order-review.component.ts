@@ -68,25 +68,25 @@ export class OrderReviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = parseInt(localStorage.getItem('mnd:uid'));
-    this.buildForm();
+    // this.buildForm();
     this.getCartDetails();
 
   }
 
-  buildForm() {
-    this.shippingDetails = this.formBuilder.group({
-      CheckoutId: [''],
-      FirstName: ['', Validators.required],
-      LastName: ['', Validators.required],
-      Address: ['', Validators.required],
-      City: ['', Validators.required],
-      State: ['', Validators.required],
-      Country: ['', Validators.required],
-      ZipCode: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
-      Phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
-      AddressType: ['', Validators.required]
-    });
-  }
+  // buildForm() {
+  //   this.shippingDetails = this.formBuilder.group({
+  //     CheckoutId: [''],
+  //     FirstName: ['', Validators.required],
+  //     LastName: ['', Validators.required],
+  //     Address: ['', Validators.required],
+  //     City: ['', Validators.required],
+  //     State: ['', Validators.required],
+  //     Country: ['', Validators.required],
+  //     ZipCode: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
+  //     Phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+  //     AddressType: ['', Validators.required]
+  //   });
+  // }
 
   //   shippingDetails = new FormGroup({
   //   CheckoutId: new FormControl(),

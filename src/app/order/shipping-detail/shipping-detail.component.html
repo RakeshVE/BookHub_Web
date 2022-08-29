@@ -1,7 +1,7 @@
 <div class="container mt-32">
   <p>shipping-detail works!</p>
   <div class="d-flex">
-    <form action="" method="" novalidate [formGroup]="shippingDetails">
+    <form action="" method="" novalidate [formGroup]="shippingDetails" (ngSubmit)="paynow()">
       <div class="title ml-3">
         <h2>Shipping Details</h2>
       </div>
@@ -85,6 +85,9 @@
         <div class="error" *ngIf="validateControl('AddressType') && errorHandling('AddressType', 'required')">
           This field is required
         </div>
+      </label>
+      <label>
+        <button type="submit" style="width:30%;margin-left:320px;">Pay Now</button>
       </label>
     </form>
   </div>

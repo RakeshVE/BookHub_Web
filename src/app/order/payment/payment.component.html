@@ -1,0 +1,57 @@
+<div class="container mt-32">
+  <div class="d-flex">
+
+
+    <div class="Yorder">
+
+
+
+
+      <div id="collapseExample">
+        <!-- <form [formGroup]="form" (ngSubmit)="paynow()"> -->
+        <form [formGroup]="form" (ngSubmit)="paynow()">
+          <!-- <div class="card card-body"> -->
+          <!-- <button type="button" (click)="makePayment()">Pay With RazorPay</button>
+        <br /><br />
+        <button type="button" (click)="checkout()">Pay With Stripe</button><br /><br />
+        <button type="button" (click)="paywithpaypal()">Pay With Paypal</button> -->
+          <div class="form-check form-check-inline mt-14">
+            <input class="form-check-input" type="radio" name="paymentRadion" value="razorpay" id="paymentRazorpay"
+              checked formControlName="paymentRadion">
+            <label class="form-check-label ml-3" for="flexRadioDefault1">
+              <img src="assets/images/razorpay.png" style="height:200px; width:500px;">
+            </label>
+
+          </div>
+          <!-- <div class="form-check form-check-inline"> -->
+          <div class="form-check  form-check-inline mt-14" style="height:150px; width:500px; margin-left: 170px;">
+            <input class="form-check-input" type="radio" name="paymentRadion" value="stripe" id="paymentStripe"
+              formControlName="paymentRadion">
+            <label class="form-check-label" for="flexRadioDefault2">
+              <img src="assets/images/stripe.png">
+            </label>
+          </div>
+
+
+          <div class="form-check mt-14">
+            <input class="form-check-input mt-14" type="radio" name="paymentRadion" value="paypal" id="paymentPaypal"
+              formControlName="paymentRadion">
+            <label class="form-check-label" for="flexRadioDefault2">
+              <img src="assets/images/paypal.png" style="height:120px; width:500px;">
+            </label>
+          </div>
+
+          <!-- </div> -->
+          <div *ngIf="f.paymentRadion.touched && f.paymentRadion.invalid" class="alert alert-danger">
+            Please Select Any Payment Gateway !
+          </div>
+
+          <button class="btn-primary btn-payNow" type="submit">Pay Now</button>
+        </form>
+      </div>
+
+      <!-- paypal button integration -->
+      <!-- <div #paypalRef></div> -->
+    </div>
+  </div>
+</div>
