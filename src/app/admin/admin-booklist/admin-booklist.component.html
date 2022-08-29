@@ -25,8 +25,17 @@
 <!-- <div class="card"> -->
 <div class="row">
     <div class="col-md-12">
-        <div class="table-responsive">
-            <table class="table table-striped">
+        <div class="table-responsive" style="margin-top: 53px;">
+            <div class="title filter flex items-center mb-2" style="border-radius: 4px 4px 0 0; padding: 7px; width: 99%">
+                <h4>Book List</h4>
+                <div class="flex items-center ml-auto">
+                  <a mat-list-item routerLink="/admin/AddBook" routerLinkActive="bg-gray-200" 
+                  class="font-semibold text-gray-500 hover:text-primary" style="color: white;">
+                  <mat-icon class="mr-2">create</mat-icon> Add Book</a>
+                </div>
+            </div> 
+            
+            <table class="table table-striped" style="margin-top: 22px ;">
                 <thead>
                     <tr>
                         <th>Book ID</th>
