@@ -302,7 +302,8 @@ export class OrderReviewComponent implements OnInit {
   }
   PlacePay() {
     // this.router.navigate(['/shiping']);
-    this.router.navigate(['/Review/shiping']);
+    this.addOrderDetails(this.bookIds, this.userId, this.checkoutId);
+    this.router.navigate(['/Review/shiping'], { queryParams: { chkoutId: this.checkoutId, payAmount: this.finalPay } });
 
 
   }

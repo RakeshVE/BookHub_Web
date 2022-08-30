@@ -8,7 +8,7 @@ import { orderdetail } from '../shared/data/orderdetail';
   providedIn: 'root'
 })
 export class OrdersService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   baseUrl = environment.baseUrl;
 
   getWishListItem(route: string) {
@@ -19,25 +19,28 @@ export class OrdersService {
     return this.http.get<orderdetail[]>(this.baseUrl + 'Orders/GetOrderStatus');
   }
 
-  createCheckout(totalAmount:any,userID:any) {
-    return this.http.post(this.baseUrl + 'Orders/Checkout?userId='+userID, totalAmount);
+  createCheckout(totalAmount: any, userID: any) {
+    return this.http.post(this.baseUrl + 'Orders/Checkout?userId=' + userID, totalAmount);
   }
 
-  addShippingDetails(shippingDetails: any){
+  addShippingDetails(shippingDetails: any) {
     return this.http.post(this.baseUrl + 'Orders/ShippingDetails', shippingDetails);
   }
 
-  addOrderDetails(bookIds: any, userId: any, checkoutId: any){
-    return this.http.post(this.baseUrl + 'Orders/AddOrderDetails?userId='+ userId + '&checkoutId='+ checkoutId, bookIds);
+  addOrderDetails(bookIds: any, userId: any, checkoutId: any) {
+    return this.http.post(this.baseUrl + 'Orders/AddOrderDetails?userId=' + userId + '&checkoutId=' + checkoutId, bookIds);
   }
 
-  getOrdersPlaced(userId: any){
+  getOrdersPlaced(userId: any) {
     return this.http.get(this.baseUrl + 'Orders/GetOrdersPlaced?userId=' + userId);
   }
-  stripePayments(bodyString:any){
-    return this.http.post(this.baseUrl+'Orders/StripePayment', bodyString);
+  stripePayments(bodyString: any) {
+    return this.http.post(this.baseUrl + 'Orders/StripePayment', bodyString);
   }
-  getOrdersDetails(){
-    return this.http.get(this.baseUrl + 'Orders/GetOrders' );
+  getOrdersDetails() {
+    return this.http.get(this.baseUrl + 'Orders/GetOrders');
+  }
+  addPaymentDetails(PaymentDetails: any) {
+    return this.http.post(this.baseUrl + 'Orders/PaymentDetails', PaymentDetails);
   }
 }

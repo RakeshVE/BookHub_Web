@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OrdersService } from 'src/app/services/orders.service';
 import { UserService } from 'src/app/services/user.service';
 declare var Razorpay: any;
@@ -54,15 +54,21 @@ export class PaymentComponent implements OnInit {
     paymentRadion: new FormControl('', Validators.required)
   });
   formValue: any;
+  paymentMethod: string;
   constructor(private orderService: OrdersService,
     private router: Router,
     private userService: UserService,
+    private route: ActivatedRoute
   ) { }
   //Reference for paypal integration
   @ViewChild('paypalRef', { static: true }) private paypalRef: ElementRef;
 
   ngOnInit(): void {
     this.userId = parseInt(localStorage.getItem('mnd:uid'));
+    this.route.queryParams.subscribe(params => {
+      this.checkoutId = params['chkoutId'];
+      this.finalPay = params['payAmount'];
+    });
   }
   validateControl(controllerName: string) {
     debugger;
@@ -88,6 +94,7 @@ export class PaymentComponent implements OnInit {
       this.form.markAllAsTouched();
     } else {
       this.formValue = this.form.value
+      this.paymentMethod = this.formValue.paymentRadion;
       console.log("formValue", this.formValue);
       if (this.formValue.paymentRadion == 'razorpay') {
         this.makePayment();
@@ -197,7 +204,8 @@ export class PaymentComponent implements OnInit {
   }
   afterPayments() {
     // this.addShippingDetails();
-    this.addOrderDetails(this.bookIds, this.userId, this.checkoutId);
+    // this.addOrderDetails(this.bookIds, this.userId, this.checkoutId);
+    this.addPaymentDetails(null);
     // this.emptyCart();
 
     // if (confirm('Payment made successfully !')) {
@@ -207,8 +215,22 @@ export class PaymentComponent implements OnInit {
   emptyCart() {
     this.userService.EmptyToCart(this.userId).subscribe();
   }
-  addOrderDetails(bookIds: any, userId: any, checkoutId: any) {
-    this.orderService.addOrderDetails(bookIds, userId, checkoutId).subscribe((data: any) => {
+  // addOrderDetails(bookIds: any, userId: any, checkoutId: any) {
+  //   this.orderService.addOrderDetails(bookIds, userId, checkoutId).subscribe((data: any) => {
+  //     console.log('Orders Data added successfully', data);
+  //   });
+  // }
+  addPaymentDetails(obj: any) {
+    const pay = {
+      CheckoutId: this.checkoutId,
+      UserId: this.userId,
+      TransactionId: null,
+      TransactionType: null,
+      PaymentMode: this.paymentMethod,
+      Status: "Sucess",
+      Amount: this.finalPay,
+    }
+    this.orderService.addPaymentDetails(pay).subscribe((data: any) => {
       console.log('Orders Data added successfully', data);
     });
   }
