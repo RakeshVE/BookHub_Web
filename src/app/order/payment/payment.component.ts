@@ -206,7 +206,7 @@ export class PaymentComponent implements OnInit {
     // this.addShippingDetails();
     // this.addOrderDetails(this.bookIds, this.userId, this.checkoutId);
     this.addPaymentDetails(null);
-    // this.emptyCart();
+    this.emptyCart();
 
     // if (confirm('Payment made successfully !')) {
     //   this.router.navigate(['/products']);
